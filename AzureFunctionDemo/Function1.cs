@@ -9,16 +9,18 @@ namespace AzureFunctionDemo
     public class Function1
     {
         private readonly IGreetingService _greetingService;
+        private readonly ILogger<Function1> _logger;
 
-        public Function1(IGreetingService greetingService)
+        public Function1(IGreetingService greetingService, ILogger<Function1> logger)
         {
             _greetingService = greetingService;
+            _logger = logger;
         }
 
         [FunctionName("Function1")]
-        public void Run([TimerTrigger("*/15 * * * * *")]TimerInfo myTimer, ILogger log)
+        public void Run([TimerTrigger("*/15 * * * * *")]TimerInfo myTimer)
         {
-            log.LogInformation(_greetingService.Hello("ivan"));
+            _logger.LogWarning(_greetingService.Hello("ivan"));
         }
     }
 }
