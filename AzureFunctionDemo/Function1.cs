@@ -1,5 +1,6 @@
 using System;
 using AzureFunctionDemo.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
@@ -18,9 +19,11 @@ namespace AzureFunctionDemo
         }
 
         [FunctionName("Function1")]
-        public void Run([TimerTrigger("*/15 * * * * *")]TimerInfo myTimer)
+        public IActionResult Run([TimerTrigger("*/15 * * * * *")]TimerInfo myTimer)
         {
             _logger.LogWarning(_greetingService.Hello("ivan"));
+
+            return new ObjectResult(new { a = "hi" });
         }
     }
 }

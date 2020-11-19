@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctionDemo", "AzureFunctionDemo\AzureFunctionDemo.csproj", "{CEC12623-73FF-4B74-9D39-6A5C16FCFB54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionDemo", "AzureFunctionDemo\AzureFunctionDemo.csproj", "{CEC12623-73FF-4B74-9D39-6A5C16FCFB54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpAzureFunctionDemo", "HttpAzureFunctionDemo\HttpAzureFunctionDemo.csproj", "{3D419D1E-0E99-42D3-800E-54FBF2992358}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CEC12623-73FF-4B74-9D39-6A5C16FCFB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEC12623-73FF-4B74-9D39-6A5C16FCFB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEC12623-73FF-4B74-9D39-6A5C16FCFB54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D419D1E-0E99-42D3-800E-54FBF2992358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D419D1E-0E99-42D3-800E-54FBF2992358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D419D1E-0E99-42D3-800E-54FBF2992358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D419D1E-0E99-42D3-800E-54FBF2992358}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
