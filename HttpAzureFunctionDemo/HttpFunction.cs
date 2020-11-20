@@ -7,14 +7,22 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace HttpAzureFunctionDemo
 {
     public class HttpFunction
     {
-        public HttpFunction()
-        {
+        private readonly IConfiguration _configuration;
+        private readonly IOptions<MyConfiguration> _myConfig;
+        private readonly IOptions<MyConfigurationSecrets> _mySecrets;
 
+        public HttpFunction(IConfiguration configuration, IOptions<MyConfiguration> myConfig, IOptions<MyConfigurationSecrets> mySecrets)
+        {
+            _configuration = configuration;
+            _myConfig = myConfig;
+            _mySecrets = mySecrets;
         }
 
         [FunctionName("HttpFunction")]
@@ -36,7 +44,12 @@ namespace HttpAzureFunctionDemo
 
 
 
-            return new OkObjectResult("Hi from HttpFunction");
+            return new OkObjectResult(new
+            {
+                localValues = _myConfig/*,
+                secretValues = _mySecrets*/
+            });
+
         }
     }
 }
