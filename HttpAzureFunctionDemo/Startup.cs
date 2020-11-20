@@ -2,6 +2,7 @@
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +21,12 @@ namespace HttpAzureFunctionDemo
             builder.Services.Configure<MyConfiguration>(Configuration.GetSection("MyConfiguration"));
             builder.Services.Configure<MyConfiguration>(Configuration.GetSection("MyConfigurationSecrets"));
             builder.Services.Configure<Serilog>(Configuration.GetSection("Serilog"));
+
+            var logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(Configuration)
+                .CreateLogger();
+
+            builder.Services.AddLogging(lg => lg.AddSerilog(logger));
         }
 
         public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
