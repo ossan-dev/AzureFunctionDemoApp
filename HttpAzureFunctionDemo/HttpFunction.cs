@@ -16,11 +16,13 @@ namespace HttpAzureFunctionDemo
     {
         private readonly IOptionsMonitor<MyConfiguration> _myConfig;
         private readonly IOptions<MyConfigurationSecrets> _mySecrets;
+        private readonly IOptionsMonitor<Serilog> _serilog;
 
-        public HttpFunction(IOptionsMonitor<MyConfiguration> myConfig, IOptions<MyConfigurationSecrets> mySecrets)
+        public HttpFunction(IOptionsMonitor<MyConfiguration> myConfig, IOptions<MyConfigurationSecrets> mySecrets, IOptionsMonitor<Serilog> serilog)
         {
             _myConfig = myConfig;
             _mySecrets = mySecrets;
+            _serilog = serilog;
         }
 
         [FunctionName("HttpFunction")]
@@ -44,7 +46,7 @@ namespace HttpAzureFunctionDemo
 
             return new OkObjectResult(new
             {
-                localvalues = _myConfig/*,
+                serilog = _serilog/*,
                 secretValues = _mySecrets*/
             });
 

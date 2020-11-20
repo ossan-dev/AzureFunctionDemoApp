@@ -19,6 +19,7 @@ namespace HttpAzureFunctionDemo
         {
             builder.Services.Configure<MyConfiguration>(Configuration.GetSection("MyConfiguration"));
             builder.Services.Configure<MyConfiguration>(Configuration.GetSection("MyConfigurationSecrets"));
+            builder.Services.Configure<Serilog>(Configuration.GetSection("Serilog"));
         }
 
         public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
