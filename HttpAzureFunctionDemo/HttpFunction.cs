@@ -14,13 +14,11 @@ namespace HttpAzureFunctionDemo
 {
     public class HttpFunction
     {
-        private readonly IConfiguration _configuration;
-        private readonly IOptions<MyConfiguration> _myConfig;
+        private readonly IOptionsMonitor<MyConfiguration> _myConfig;
         private readonly IOptions<MyConfigurationSecrets> _mySecrets;
 
-        public HttpFunction(IConfiguration configuration, IOptions<MyConfiguration> myConfig, IOptions<MyConfigurationSecrets> mySecrets)
+        public HttpFunction(IOptionsMonitor<MyConfiguration> myConfig, IOptions<MyConfigurationSecrets> mySecrets)
         {
-            _configuration = configuration;
             _myConfig = myConfig;
             _mySecrets = mySecrets;
         }
@@ -42,11 +40,11 @@ namespace HttpAzureFunctionDemo
             //    ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
             //    : $"Hello, {name}. This HTTP triggered function executed successfully.";
 
-
+            
 
             return new OkObjectResult(new
             {
-                localValues = _myConfig/*,
+                localvalues = _myConfig/*,
                 secretValues = _mySecrets*/
             });
 

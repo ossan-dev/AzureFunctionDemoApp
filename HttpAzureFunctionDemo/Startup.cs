@@ -17,23 +17,14 @@ namespace HttpAzureFunctionDemo
 
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            builder.Services.AddOptions<MyConfiguration>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                {
-                    configuration.GetSection("MyConfiguration").Bind(settings);
-                });
-
-            builder.Services.AddOptions<MyConfigurationSecrets>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                {
-                    configuration.GetSection("MyConfigurationSecrets").Bind(settings);
-                });
+            builder.Services.Configure<MyConfiguration>(Configuration.GetSection("MyConfiguration"));
+            builder.Services.Configure<MyConfiguration>(Configuration.GetSection("MyConfigurationSecrets"));
         }
 
         public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
         {
             var ctx = builder.GetContext();
-            builder.ConfigurationBuilder
+            Configuration = builder.ConfigurationBuilder
                 .AddJsonFile(Path.Combine(ctx.ApplicationRootPath, "local.settings.json"), true, true)
                 .AddJsonFile(Path.Combine(ctx.ApplicationRootPath, "appsettings.json"), false, true)
                 .AddUserSecrets(Assembly.GetExecutingAssembly(), true, true)
