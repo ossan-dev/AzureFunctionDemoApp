@@ -41,5 +41,7 @@
   <Target Name="FunctionsPublishDepsCopy" AfterTargets="Publish">
     <Copy SourceFiles="$(PublishDir)$(AssemblyName).deps.json" DestinationFiles="$(PublishDir)bin\$(AssemblyName).deps.json" />
   </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties host_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
   
 </Project>

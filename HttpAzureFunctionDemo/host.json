@@ -3,7 +3,7 @@
   "logging": {
     "fileLoggingMode": "debugOnly",
     "logLevel": {
-      "Function": "Information",
+      "Function.HttpFunction": "Information",
       "default": "Information"
     }
   },
@@ -29,7 +29,7 @@
               {
                 "Name": "ByIncludingOnly",
                 "Args": {
-                  "expression": "(@Level = 'Error' or @Level = 'Fatal')"
+                  "expression": "Contains(SourceContext, 'Product')"
                 }
               }
             ],
@@ -38,7 +38,7 @@
                 "Name": "MSSqlServer",
                 "Args": {
                   "connectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AzureFunctionDemoApp;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
-                  "tableName": "ErrorLogs",
+                  "tableName": "product_log",
                   "autoCreateSqlTable": true
                 }
               }
@@ -54,7 +54,7 @@
               {
                 "Name": "ByIncludingOnly",
                 "Args": {
-                  "expression": "(@Level = 'Information' or @Level = 'Warning')"
+                  "expression": "Contains(SourceContext, 'Order')"
                 }
               }
             ],
@@ -63,7 +63,7 @@
                 "Name": "MSSqlServer",
                 "Args": {
                   "connectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AzureFunctionDemoApp;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
-                  "tableName": "InformationLogs",
+                  "tableName": "order_log",
                   "autoCreateSqlTable": true
                 }
               }

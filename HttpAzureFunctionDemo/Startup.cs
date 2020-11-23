@@ -1,4 +1,5 @@
 ﻿using HttpAzureFunctionDemo;
+using HttpAzureFunctionDemo.Services;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,6 +39,9 @@ namespace HttpAzureFunctionDemo
             //    lg.AddSerilog(logger);
             //    SelfLog.Enable(Console.Error);
             //});
+
+            builder.Services.AddScoped<IOrder, Order>();
+            builder.Services.AddScoped<IProduct, Product>();
 
             builder.Services.AddSingleton<ILoggerProvider>(sp => 
             {
