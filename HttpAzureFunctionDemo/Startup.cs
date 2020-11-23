@@ -26,7 +26,7 @@ namespace HttpAzureFunctionDemo
                 .ReadFrom.Configuration(Configuration)
                 .CreateLogger();
 
-            builder.Services.AddLogging(lg => lg.AddSerilog(logger));
+            builder.Services.AddLogging(lg => lg.AddSerilog(Log.Logger));
         }
 
         public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
