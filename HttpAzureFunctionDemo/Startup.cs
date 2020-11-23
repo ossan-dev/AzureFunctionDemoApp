@@ -2,8 +2,11 @@
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyModel;
+using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Debugging;
+using Serilog.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,14 +27,30 @@ namespace HttpAzureFunctionDemo
             builder.Services.Configure<MyConfiguration>(Configuration.GetSection("MyConfigurationSecrets"));
             builder.Services.Configure<Serilog>(Configuration.GetSection("Serilog"));
 
-            var logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(Configuration)                
+            //var logger = new LoggerConfiguration()
+            //.ReadFrom.Configuration(Configuration)
+            //.CreateLogger();
+
+            //SelfLog.Enable(msg => Debug.WriteLine(msg));
+
+            //builder.Services.AddLogging(lg =>
+            //{
+            //    lg.AddSerilog(logger);
+            //    SelfLog.Enable(Console.Error);
+            //});
+
+            builder.Services.AddSingleton<ILoggerProvider>(sp => 
+            {
+                var functionDependencyContext = DependencyContext.Load(typeof(Startup).Assembly);
+
+                //var hostConfig = sp.GetRequiredService<IConfiguration>();
+
+                var logger= new LoggerConfiguration()
+                .ReadFrom.Configuration(Configuration, sectionName: "AzureFunctionsJobHost:Serilog", dependencyContext: functionDependencyContext)
                 .CreateLogger();
 
-            //SelfLog.Enable(Console.Error);
-            SelfLog.Enable(msg => Debug.WriteLine(msg));
-
-            builder.Services.AddLogging(lg => lg.AddSerilog(logger));
+                return new SerilogLoggerProvider(logger, true);
+            });
         }
 
         public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)

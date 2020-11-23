@@ -28,10 +28,11 @@ namespace HttpAzureFunctionDemo
         }
 
         [FunctionName("HttpFunction")]
-        public IActionResult Run(
+        public void Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
         {
             _logger.LogInformation("Information by Azure function");
+            _logger.LogWarning("Warning by Azure Function");
             _logger.LogError("Error by Azure Function");
 
             //string name = req.Query["name"];
@@ -43,11 +44,6 @@ namespace HttpAzureFunctionDemo
             //string responseMessage = string.IsNullOrEmpty(name)
             //    ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
             //    : $"Hello, {name}. This HTTP triggered function executed successfully.";
-
-            
-
-            return new OkObjectResult("ok");
-
         }
     }
 }
