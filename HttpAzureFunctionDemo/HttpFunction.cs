@@ -46,11 +46,7 @@ namespace HttpAzureFunctionDemo
 
             
 
-            return new OkObjectResult(new
-            {
-                serilog = _serilog/*,
-                secretValues = _mySecrets*/
-            });
+            return new OkObjectResult("ok");
 
         }
     }

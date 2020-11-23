@@ -3,8 +3,10 @@ using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
+using Serilog.Debugging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -23,10 +25,13 @@ namespace HttpAzureFunctionDemo
             builder.Services.Configure<Serilog>(Configuration.GetSection("Serilog"));
 
             var logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(Configuration)
+                .ReadFrom.Configuration(Configuration)                
                 .CreateLogger();
 
-            builder.Services.AddLogging(lg => lg.AddSerilog(Log.Logger));
+            //SelfLog.Enable(Console.Error);
+            SelfLog.Enable(msg => Debug.WriteLine(msg));
+
+            builder.Services.AddLogging(lg => lg.AddSerilog(logger));
         }
 
         public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
