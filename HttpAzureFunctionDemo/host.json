@@ -38,8 +38,27 @@
                 "Name": "MSSqlServer",
                 "Args": {
                   "connectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AzureFunctionDemoApp;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
-                  "tableName": "product_log",
-                  "autoCreateSqlTable": true
+                  "sinkOptionsSection": {
+                    "tableName": "product_log",
+                    "autoCreateSqlTable": true
+                  },
+                  "columnOptionsSection": {
+                    "removeStandardColumns": [ "MessageTemplate", "Properties" ],
+                    "additionalColumns": [
+                      {
+                        "ColumnName": "ProductId",
+                        "DataType": "varchar",
+                        "AllowNull": true,
+                        "DataLength": 50
+                      },
+                      {
+                        "ColumnName": "Status",
+                        "DataType": "varchar",
+                        "AllowNull": true,
+                        "DataLength": 50
+                      }
+                    ]
+                  }
                 }
               }
             ]
@@ -63,8 +82,27 @@
                 "Name": "MSSqlServer",
                 "Args": {
                   "connectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AzureFunctionDemoApp;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
-                  "tableName": "order_log",
-                  "autoCreateSqlTable": true
+                  "sinkOptionsSection": {
+                    "tableName": "order_log",
+                    "autoCreateSqlTable": true
+                  },
+                  "columnOptionsSection": {
+                    "removeStandardColumns": [ "MessageTemplate", "Properties" ],
+                    "additionalColumns": [
+                      {
+                        "ColumnName": "OrderId",
+                        "DataType": "varchar",
+                        "AllowNull": true,
+                        "DataLength": 50
+                      },
+                      {
+                        "ColumnName": "Status",
+                        "DataType": "varchar",
+                        "AllowNull": true,
+                        "DataLength": 50
+                      }
+                    ]
+                  }
                 }
               }
             ]
