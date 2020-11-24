@@ -30,11 +30,11 @@
 
   <!-- add this targets -->
   <Target Name="FunctionsPostBuildDepsCopy" AfterTargets="PostBuildEvent">
-    <Copy SourceFiles="$(OutDir)$(AssemblyName).deps.json" DestinationFiles="$(OutDir)bin\$(AssemblyName).deps.json" />
+    <Copy SourceFiles="$(OutDir)$(AssemblyName).deps.json" DestinationFiles="$(OutDir)bin\function.deps.json" />
   </Target>
 
   <Target Name="FunctionsPublishDepsCopy" AfterTargets="Publish">
-    <Copy SourceFiles="$(PublishDir)$(AssemblyName).deps.json" DestinationFiles="$(PublishDir)bin\$(AssemblyName).deps.json" />
+    <Copy SourceFiles="$(PublishDir)bin\function.deps.json" DestinationFiles="$(PublishDir)bin\function.deps.json" />
   </Target>
 
   <ProjectExtensions><VisualStudio><UserProperties host_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
