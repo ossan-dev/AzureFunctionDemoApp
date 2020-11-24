@@ -37,7 +37,7 @@
               {
                 "Name": "MSSqlServer",
                 "Args": {
-                  "connectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AzureFunctionDemoApp;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
+                  "connectionString": "user secrets",
                   "sinkOptionsSection": {
                     "tableName": "product_log",
                     "autoCreateSqlTable": true
@@ -81,7 +81,7 @@
               {
                 "Name": "MSSqlServer",
                 "Args": {
-                  "connectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AzureFunctionDemoApp;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
+                  "connectionString": "user secrets",
                   "sinkOptionsSection": {
                     "tableName": "order_log",
                     "autoCreateSqlTable": true

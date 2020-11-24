@@ -5,11 +5,6 @@
     <UserSecretsId>ea25a920-14d8-4ac9-a23f-28246304716e</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Logs\**" />
-    <EmbeddedResource Remove="Logs\**" />
-    <None Remove="Logs\**" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.10" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.11" />

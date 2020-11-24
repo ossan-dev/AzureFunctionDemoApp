@@ -47,10 +47,10 @@ namespace HttpAzureFunctionDemo
             {
                 var functionDependencyContext = DependencyContext.Load(typeof(Startup).Assembly);
 
-                //var hostConfig = sp.GetRequiredService<IConfiguration>();
+                var hostConfig = sp.GetRequiredService<IConfiguration>();
 
                 var logger= new LoggerConfiguration()
-                .ReadFrom.Configuration(Configuration, sectionName: "AzureFunctionsJobHost:Serilog", dependencyContext: functionDependencyContext)
+                .ReadFrom.Configuration(hostConfig, sectionName: "AzureFunctionsJobHost:Serilog", dependencyContext: functionDependencyContext)
                 .CreateLogger();
 
                 return new SerilogLoggerProvider(logger, true);
