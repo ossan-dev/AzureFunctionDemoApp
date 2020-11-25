@@ -40,8 +40,8 @@ namespace HttpAzureFunctionDemo
             //_logger.LogWarning("Warning by Azure Function");
             //_logger.LogError("Error by Azure Function");
 
-            _product.Run();
             _order.Run();
+            _product.Run();
 
             //string name = req.Query["name"];
 

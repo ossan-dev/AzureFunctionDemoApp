@@ -16,10 +16,19 @@ namespace HttpAzureFunctionDemo.Services
         }
         public void Run()
         {
-            LogContext.PushProperty("OrderId", "1111111");
-            LogContext.PushProperty("Status", "OrdStatus");
-            _logger.LogInformation("Order - Information");
-            _logger.LogError("Order - Error");
+            try
+            {
+                DemoEntityWrapper test = new DemoEntityWrapper();
+                test.DemoEntities.Add(new DemoEntity() { Id = 1, Name = "Ivan" });
+                LogContext.PushProperty("OrderId", "1111111");
+                LogContext.PushProperty("Status", "OrdStatus");
+                _logger.LogInformation("Order - Information");                
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "exception during some operation");
+            }
+
         }
     }
 }
