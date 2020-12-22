@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /HttpAzureFunctionDemo/Properties
+/HttpAzureFunctionDemo/local.settings.json
