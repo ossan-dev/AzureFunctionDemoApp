@@ -10,5 +10,6 @@ namespace HttpAzureFunctionDemo
         public int AmountOfRetries { get; set; }
         public string KeyToOverride { get; set; }
         public string KeyToNotOverride { get; set; }
+        public IEnumerable<string> Authorities { get; set; }
     }
 }

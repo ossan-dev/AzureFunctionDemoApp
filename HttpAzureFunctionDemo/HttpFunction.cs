@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
 using HttpAzureFunctionDemo.Services;
+using System.Collections.Generic;
 
 namespace HttpAzureFunctionDemo
 {
@@ -21,8 +22,9 @@ namespace HttpAzureFunctionDemo
         private readonly ILogger<HttpFunction> _logger;
         private readonly IProduct _product;
         private readonly IOrder _order;
+        private readonly IConfiguration _configuration;
 
-        public HttpFunction(IOptionsMonitor<MyConfiguration> myConfig, IOptions<MyConfigurationSecrets> mySecrets, IOptionsMonitor<Serilog> serilog, ILogger<HttpFunction> logger, IProduct product, IOrder order)
+        public HttpFunction(IOptionsMonitor<MyConfiguration> myConfig, IOptions<MyConfigurationSecrets> mySecrets, IOptionsMonitor<Serilog> serilog, ILogger<HttpFunction> logger, IProduct product, IOrder order, IConfiguration configuration)
         {
             _myConfig = myConfig;
             _mySecrets = mySecrets;
@@ -30,6 +32,7 @@ namespace HttpAzureFunctionDemo
             _logger = logger;
             _product = product;
             _order = order;
+            _configuration = configuration;
         }
 
         [FunctionName("HttpFunction")]
@@ -39,6 +42,11 @@ namespace HttpAzureFunctionDemo
             //_logger.LogInformation("Information by Azure function");
             //_logger.LogWarning("Warning by Azure Function");
             //_logger.LogError("Error by Azure Function");
+
+            //var auth = _configuration.GetSection("MyConfiguration:Authorities");
+            //var auth = _configuration.GetValue<List<string>>("MyConfiguration:Authorities");
+            var auth = _configuration.GetSection("MyConfiguration:Authorities").Get<List<string>>();
+            var auth2 = _myConfig.CurrentValue.Authorities;
 
             _order.Run();
             _product.Run();
