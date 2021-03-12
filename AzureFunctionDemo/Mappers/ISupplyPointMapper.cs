@@ -6,5 +6,6 @@ namespace AzureFunctionDemo.Mappers
     public interface ISupplyPointMapper<T> where T : class
     {
         InvCommunicaion ToInvCommunication(SupplyPoint supplyPoint);
+        NavSupplyPoint ToSupplyPointStatus(SupplyPoint supplyPoint);
     }
 }

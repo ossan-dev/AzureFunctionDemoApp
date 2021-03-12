@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AzureFunctionDemo.Entities
 {
-    public class SupplyPoint
+    public abstract class SupplyPoint
     {
         public Guid Id { get; set; }
         public DateTime InsertDate { get; set; }

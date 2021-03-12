@@ -4,9 +4,9 @@ using System.Text;
 
 namespace AzureFunctionDemo.Entities.Nav
 {
-    public class InvCommunicaion
+    public class NavSupplyPoint
     {
         public Guid Id { get; set; }
-        public string Text { get; set; } = "This is an instance of InvCommunication";
+        public string Text { get; set; }
     }
 }

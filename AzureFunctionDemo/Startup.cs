@@ -1,4 +1,5 @@
 ﻿using AzureFunctionDemo;
+using AzureFunctionDemo.Entities;
 using AzureFunctionDemo.Mappers;
 using AzureFunctionDemo.Services;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;

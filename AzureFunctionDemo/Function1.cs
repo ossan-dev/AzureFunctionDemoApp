@@ -14,14 +14,9 @@ namespace AzureFunctionDemo
     {
         private readonly ISupplyPointMapper<SupplyPoint> _supplyPointMapper;
 
-        //private readonly IPodMapper _podMapper;
-        //private readonly IPdrMapper _pdrMapper;
-
-        public Function1(/*IPodMapper podMapper, IPdrMapper pdrMapper*/ISupplyPointMapper<SupplyPoint> supplyPointMapper)
+        public Function1(ISupplyPointMapper<SupplyPoint> supplyPointMapper)
         {
             _supplyPointMapper = supplyPointMapper;
-            /*_podMapper = podMapper;
-_pdrMapper = pdrMapper;*/
         }
 
         [FunctionName("Function1")]
@@ -37,13 +32,15 @@ _pdrMapper = pdrMapper;*/
             pdr.InsertDate = new DateTime(2020, 2, 25);
             pdr.PdrNo = "00123";
 
-            //var invCommPod = _podMapper.ToInvCommunication(pod);
-            //var invCommPdr = _pdrMapper.ToInvCommunication(pdr);
-
             var invCommPod = _supplyPointMapper.ToInvCommunication(pod);
+            var invCommPdr = _supplyPointMapper.ToInvCommunication(pdr);
+            var podNav = _supplyPointMapper.ToSupplyPointStatus(pod);
+            var pdrNav = _supplyPointMapper.ToSupplyPointStatus(pdr);
 
+            Console.WriteLine(JsonSerializer.Serialize(podNav));
+            Console.WriteLine(JsonSerializer.Serialize(pdrNav));
             Console.WriteLine(JsonSerializer.Serialize(invCommPod));
-            //Console.WriteLine(JsonSerializer.Serialize(invCommPdr));
+            Console.WriteLine(JsonSerializer.Serialize(invCommPdr));
         }
     }
 }

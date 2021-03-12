@@ -12,5 +12,11 @@ namespace AzureFunctionDemo.Mappers
         {
             return new InvCommunicaion() { Id = supplyPoint.Id };
         }
+
+        public NavSupplyPoint ToSupplyPointStatus(SupplyPoint supplyPoint)
+        {
+            return new NavSupplyPoint()
+            { Id = supplyPoint.Id, Text = supplyPoint.GetInfo() };
+        }
     }
 }
