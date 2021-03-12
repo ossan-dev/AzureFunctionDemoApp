@@ -1,4 +1,5 @@
 ﻿using AzureFunctionDemo;
+using AzureFunctionDemo.Mappers;
 using AzureFunctionDemo.Services;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,11 @@ namespace AzureFunctionDemo
 
             builder.Services.AddLogging(lg => lg.AddSerilog(logger));
             builder.Services.AddScoped<IGreetingService, GreetingService>();
+
+            //builder.Services.AddScoped<IPodMapper, PodMapper>();
+            //builder.Services.AddScoped<IPdrMapper, PdrMapper>();
+
+            builder.Services.AddScoped(typeof(ISupplyPointMapper<>), typeof(SupplyPointMapper<>));
         }
     }
 }

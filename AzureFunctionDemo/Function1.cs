@@ -1,4 +1,7 @@
 using System;
+using System.Text.Json;
+using AzureFunctionDemo.Entities;
+using AzureFunctionDemo.Mappers;
 using AzureFunctionDemo.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -9,21 +12,38 @@ namespace AzureFunctionDemo
 {
     public class Function1
     {
-        private readonly IGreetingService _greetingService;
-        private readonly ILogger<Function1> _logger;
+        private readonly ISupplyPointMapper<SupplyPoint> _supplyPointMapper;
 
-        public Function1(IGreetingService greetingService, ILogger<Function1> logger)
+        //private readonly IPodMapper _podMapper;
+        //private readonly IPdrMapper _pdrMapper;
+
+        public Function1(/*IPodMapper podMapper, IPdrMapper pdrMapper*/ISupplyPointMapper<SupplyPoint> supplyPointMapper)
         {
-            _greetingService = greetingService;
-            _logger = logger;
+            _supplyPointMapper = supplyPointMapper;
+            /*_podMapper = podMapper;
+_pdrMapper = pdrMapper;*/
         }
 
         [FunctionName("Function1")]
-        public IActionResult Run([TimerTrigger("*/15 * * * * *")]TimerInfo myTimer)
+        public void Run([TimerTrigger("*/15 * * * * *")]TimerInfo myTimer)
         {
-            _logger.LogWarning(_greetingService.Hello("ivan"));
+            Pod pod = new Pod();
+            pod.Id = new Guid("678137fc-6ccc-49f8-ae51-dea9e921ee5e");
+            pod.InsertDate = new DateTime(2020, 2, 25);
+            pod.PodNo = "IT123";
 
-            return new ObjectResult(new { a = "hi" });
+            Pdr pdr = new Pdr();
+            pdr.Id = new Guid("e95319e4-3782-43f6-ae0c-28495cbe53a3");
+            pdr.InsertDate = new DateTime(2020, 2, 25);
+            pdr.PdrNo = "00123";
+
+            //var invCommPod = _podMapper.ToInvCommunication(pod);
+            //var invCommPdr = _pdrMapper.ToInvCommunication(pdr);
+
+            var invCommPod = _supplyPointMapper.ToInvCommunication(pod);
+
+            Console.WriteLine(JsonSerializer.Serialize(invCommPod));
+            //Console.WriteLine(JsonSerializer.Serialize(invCommPdr));
         }
     }
 }

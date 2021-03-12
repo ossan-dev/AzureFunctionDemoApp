@@ -6,9 +6,9 @@ using System.Text;
 
 namespace AzureFunctionDemo.Mappers
 {
-    public class PdrMapper : SupplyPointMapper<Pdr>, IPdrMapper
+    public class SupplyPointMapper<T> : ISupplyPointMapper<T> where T : class
     {
-        public InvCommunicaion ToInvCommunication(Pdr supplyPoint)
+        public InvCommunicaion ToInvCommunication(SupplyPoint supplyPoint)
         {
             return new InvCommunicaion() { Id = supplyPoint.Id };
         }
