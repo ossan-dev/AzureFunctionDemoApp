@@ -1,6 +1,7 @@
 using System;
 using System.Text.Json;
 using AzureFunctionDemo.Entities;
+using AzureFunctionDemo.Entities.Nav;
 using AzureFunctionDemo.Mappers;
 using AzureFunctionDemo.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +14,12 @@ namespace AzureFunctionDemo
     public class Function1
     {
         private readonly ISupplyPointMapper<SupplyPoint> _supplyPointMapper;
+        private readonly ISupplyPointMapper<Pod> _podMapper;
 
-        public Function1(ISupplyPointMapper<SupplyPoint> supplyPointMapper)
+        public Function1(ISupplyPointMapper<SupplyPoint> supplyPointMapper, ISupplyPointMapper<Pod> podMapper)
         {
             _supplyPointMapper = supplyPointMapper;
+            _podMapper = podMapper;
         }
 
         [FunctionName("Function1")]

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AzureFunctionDemo.Mappers
 {
-    public class SupplyPointMapper<T> : ISupplyPointMapper<T> where T : class
+    public class SupplyPointMapper<T> : ISupplyPointMapper<T> where T : SupplyPoint
     {
         public InvCommunicaion ToInvCommunication(SupplyPoint supplyPoint)
         {
