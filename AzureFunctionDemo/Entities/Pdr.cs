@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AzureFunctionDemo.Mappers;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,10 +8,9 @@ namespace AzureFunctionDemo.Entities
     public class Pdr : SupplyPoint
     {
         public string PdrNo { get; set; }
-
-        public override string GetInfo()
+        public override Type GetMapper()
         {
-            return "PdrText";
+            return typeof(PdrMapper);
         }
     }
 }

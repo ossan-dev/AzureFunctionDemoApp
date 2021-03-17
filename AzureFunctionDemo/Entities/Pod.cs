@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AzureFunctionDemo.Mappers;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,9 +9,9 @@ namespace AzureFunctionDemo.Entities
     {
         public string PodNo { get; set; }
 
-        public override string GetInfo()
+        public override Type GetMapper()
         {
-            return "PodText";
+            return typeof(PodMapper);
         }
     }
 }

@@ -3,7 +3,7 @@ using AzureFunctionDemo.Entities.Nav;
 
 namespace AzureFunctionDemo.Mappers
 {
-    public interface ISupplyPointMapper<T> where T : SupplyPoint
+    public interface ISupplyPointMapper
     {
         InvCommunicaion ToInvCommunication(SupplyPoint supplyPoint);
         NavSupplyPoint ToSupplyPointStatus(SupplyPoint supplyPoint);
