@@ -14,12 +14,10 @@ namespace AzureFunctionDemo
     public class Function1
     {
         private readonly ISupplyPointMapper<SupplyPoint> _supplyPointMapper;
-        private readonly ISupplyPointMapper<Pod> _podMapper;
 
-        public Function1(ISupplyPointMapper<SupplyPoint> supplyPointMapper, ISupplyPointMapper<Pod> podMapper)
+        public Function1(ISupplyPointMapper<SupplyPoint> supplyPointMapper)
         {
             _supplyPointMapper = supplyPointMapper;
-            _podMapper = podMapper;
         }
 
         [FunctionName("Function1")]
