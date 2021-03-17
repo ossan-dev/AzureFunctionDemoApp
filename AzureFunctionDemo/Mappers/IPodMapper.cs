@@ -6,8 +6,7 @@ using System.Text;
 
 namespace AzureFunctionDemo.Mappers
 {
-    public interface IPodMapper
+    public interface IPodMapper : ISupplyPointMapper<Pod>
     {
-        InvCommunicaion ToInvCommunication(Pod supplyPoint);
     }
 }

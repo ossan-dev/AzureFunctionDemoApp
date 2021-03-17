@@ -23,12 +23,8 @@ namespace AzureFunctionDemo
                 .CreateLogger();
 
             builder.Services.AddLogging(lg => lg.AddSerilog(logger));
-            builder.Services.AddScoped<IGreetingService, GreetingService>();
+            builder.Services.AddScoped<IGreetingService, GreetingService>();            
 
-            //builder.Services.AddScoped<IPodMapper, PodMapper>();
-            //builder.Services.AddScoped<IPdrMapper, PdrMapper>();
-
-            builder.Services.AddScoped(typeof(ISupplyPointMapper<>), typeof(SupplyPointMapper<>));
         }
     }
 }

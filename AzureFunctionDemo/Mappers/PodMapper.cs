@@ -6,11 +6,16 @@ using System.Text;
 
 namespace AzureFunctionDemo.Mappers
 {
-    public class PodMapper : IPodMapper
+    public class PodMapper : SupplyPointMapper<Pod>, IPodMapper
     {
-        public InvCommunicaion ToInvCommunication(Pod supplyPoint)
+        public PodMapper()
         {
-            return new InvCommunicaion() { Id = supplyPoint.Id};
+
+        }
+
+        public override NavSupplyPoint ToSupplyPointStatus(SupplyPoint supplyPoint)
+        {
+            return new NavSupplyPoint() { Id = supplyPoint.Id, Text ="Pod text" };
         }
     }
 }

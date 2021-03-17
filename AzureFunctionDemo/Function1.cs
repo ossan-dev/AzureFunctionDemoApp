@@ -13,11 +13,11 @@ namespace AzureFunctionDemo
 {
     public class Function1
     {
-        private readonly ISupplyPointMapper<SupplyPoint> _supplyPointMapper;
+        
 
-        public Function1(ISupplyPointMapper<SupplyPoint> supplyPointMapper)
+        public Function1()
         {
-            _supplyPointMapper = supplyPointMapper;
+            
         }
 
         [FunctionName("Function1")]
@@ -33,15 +33,15 @@ namespace AzureFunctionDemo
             pdr.InsertDate = new DateTime(2020, 2, 25);
             pdr.PdrNo = "00123";
 
-            var invCommPod = _supplyPointMapper.ToInvCommunication(pod);
-            var invCommPdr = _supplyPointMapper.ToInvCommunication(pdr);
-            var podNav = _supplyPointMapper.ToSupplyPointStatus(pod);
-            var pdrNav = _supplyPointMapper.ToSupplyPointStatus(pdr);
+            //var invCommPod = _supplyPointMapper.ToInvCommunication(pod);
+            //var invCommPdr = _supplyPointMapper.ToInvCommunication(pdr);
+            //var podNav = _supplyPointMapper.ToSupplyPointStatus(pod);
+            //var pdrNav = _supplyPointMapper.ToSupplyPointStatus(pdr);
 
-            Console.WriteLine(JsonSerializer.Serialize(podNav));
-            Console.WriteLine(JsonSerializer.Serialize(pdrNav));
-            Console.WriteLine(JsonSerializer.Serialize(invCommPod));
-            Console.WriteLine(JsonSerializer.Serialize(invCommPdr));
+            //Console.WriteLine(JsonSerializer.Serialize(podNav));
+            //Console.WriteLine(JsonSerializer.Serialize(pdrNav));
+            //Console.WriteLine(JsonSerializer.Serialize(invCommPod));
+            //Console.WriteLine(JsonSerializer.Serialize(invCommPdr));
         }
     }
 }
