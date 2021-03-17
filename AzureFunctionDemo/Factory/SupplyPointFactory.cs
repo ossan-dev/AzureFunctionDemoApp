@@ -15,13 +15,9 @@ namespace AzureFunctionDemo.Factory
             _serviceProvider = serviceProvider;
         }
 
-        public ISupplyPointMapper GetSupplyPointMapper(object supplyPoint)
+        public ISupplyPointMapper GetSupplyPointMapper(SupplyPoint supplyPoint)
         {
-            if (supplyPoint is Pod)
-                return (ISupplyPointMapper)_serviceProvider.GetService(typeof(PodMapper));
-            else
-                return (ISupplyPointMapper)_serviceProvider.GetService(typeof(PdrMapper));
-            throw new Exception("Object type has to be a SupplyPoint");
+            return (ISupplyPointMapper)_serviceProvider.GetService(supplyPoint.GetMapper());
         }
     }
 }

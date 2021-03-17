@@ -8,5 +8,7 @@ namespace AzureFunctionDemo.Entities
     {
         public Guid Id { get; set; }
         public DateTime InsertDate { get; set; }
+
+        public abstract Type GetMapper();
     }
 }
