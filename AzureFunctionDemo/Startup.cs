@@ -1,5 +1,6 @@
 ﻿using AzureFunctionDemo;
 using AzureFunctionDemo.Entities;
+using AzureFunctionDemo.Factory;
 using AzureFunctionDemo.Mappers;
 using AzureFunctionDemo.Services;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
@@ -23,8 +24,15 @@ namespace AzureFunctionDemo
                 .CreateLogger();
 
             builder.Services.AddLogging(lg => lg.AddSerilog(logger));
-            builder.Services.AddScoped<IGreetingService, GreetingService>();            
+            builder.Services.AddScoped<IGreetingService, GreetingService>();
 
+            builder.Services.AddScoped<SupplyPointFactory>();
+
+            builder.Services.AddScoped<PodMapper>()
+                .AddScoped<ISupplyPointMapper, PodMapper>(s => s.GetService<PodMapper>());
+
+            builder.Services.AddScoped<PdrMapper>()
+                .AddScoped<ISupplyPointMapper, PdrMapper>(s => s.GetService<PdrMapper>());
         }
     }
 }

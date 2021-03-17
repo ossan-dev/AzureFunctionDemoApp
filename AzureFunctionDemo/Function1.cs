@@ -2,6 +2,7 @@ using System;
 using System.Text.Json;
 using AzureFunctionDemo.Entities;
 using AzureFunctionDemo.Entities.Nav;
+using AzureFunctionDemo.Factory;
 using AzureFunctionDemo.Mappers;
 using AzureFunctionDemo.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,11 @@ namespace AzureFunctionDemo
 {
     public class Function1
     {
-        
+        private readonly SupplyPointFactory _supplyPointFactory;
 
-        public Function1()
+        public Function1(SupplyPointFactory supplyPointFactory)
         {
-            
+            _supplyPointFactory = supplyPointFactory;
         }
 
         [FunctionName("Function1")]
@@ -33,15 +34,15 @@ namespace AzureFunctionDemo
             pdr.InsertDate = new DateTime(2020, 2, 25);
             pdr.PdrNo = "00123";
 
-            //var invCommPod = _supplyPointMapper.ToInvCommunication(pod);
-            //var invCommPdr = _supplyPointMapper.ToInvCommunication(pdr);
-            //var podNav = _supplyPointMapper.ToSupplyPointStatus(pod);
-            //var pdrNav = _supplyPointMapper.ToSupplyPointStatus(pdr);
+            var invCommPod = _supplyPointFactory.GetSupplyPointMapper(pod).ToInvCommunication(pod);
+            var invCommPdr = _supplyPointFactory.GetSupplyPointMapper(pdr).ToInvCommunication(pdr);
+            var podNav = _supplyPointFactory.GetSupplyPointMapper(pod).ToSupplyPointStatus(pod);
+            var pdrNav = _supplyPointFactory.GetSupplyPointMapper(pdr).ToSupplyPointStatus(pdr);
 
-            //Console.WriteLine(JsonSerializer.Serialize(podNav));
-            //Console.WriteLine(JsonSerializer.Serialize(pdrNav));
-            //Console.WriteLine(JsonSerializer.Serialize(invCommPod));
-            //Console.WriteLine(JsonSerializer.Serialize(invCommPdr));
+            Console.WriteLine(JsonSerializer.Serialize(invCommPod));
+            Console.WriteLine(JsonSerializer.Serialize(podNav));
+            Console.WriteLine(JsonSerializer.Serialize(invCommPdr));
+            Console.WriteLine(JsonSerializer.Serialize(pdrNav));
         }
     }
 }
