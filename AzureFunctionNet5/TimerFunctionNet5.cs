@@ -4,12 +4,17 @@ using Microsoft.Extensions.Logging;
 
 namespace AzureFunctionNet5
 {
-    public static class TimerFunctionNet5
+    public class TimerFunctionNet5
     {
         const string _timerCron = "*/15 * * * * *";
 
-        [Function("TimerFunctionNet5")]
-        public static void Run([TimerTrigger(_timerCron)] MyInfo myTimer, FunctionContext context)
+        public TimerFunctionNet5()
+        {
+
+        }
+
+        [Function(nameof(TimerFunctionNet5))]
+        public void Run([TimerTrigger("*/15 * * * * *")] MyInfo myTimer, FunctionContext context)
         {
             var logger = context.GetLogger("TimerFunctionNet5");
             logger.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
