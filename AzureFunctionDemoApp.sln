@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionDemo", "AzureFunctionDemo\AzureFunctionDemo.csproj", "{CEC12623-73FF-4B74-9D39-6A5C16FCFB54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpAzureFunctionDemo", "HttpAzureFunctionDemo\HttpAzureFunctionDemo.csproj", "{3D419D1E-0E99-42D3-800E-54FBF2992358}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpAzureFunctionDemo", "HttpAzureFunctionDemo\HttpAzureFunctionDemo.csproj", "{3D419D1E-0E99-42D3-800E-54FBF2992358}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionNet5", "AzureFunctionNet5\AzureFunctionNet5.csproj", "{EC7E440A-FC03-40A4-8C32-78B79DA96486}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3D419D1E-0E99-42D3-800E-54FBF2992358}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D419D1E-0E99-42D3-800E-54FBF2992358}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D419D1E-0E99-42D3-800E-54FBF2992358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC7E440A-FC03-40A4-8C32-78B79DA96486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC7E440A-FC03-40A4-8C32-78B79DA96486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC7E440A-FC03-40A4-8C32-78B79DA96486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC7E440A-FC03-40A4-8C32-78B79DA96486}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
