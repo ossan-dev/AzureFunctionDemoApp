@@ -340,3 +340,5 @@ ASALocalRun/
 healthchecksdb
 /HttpAzureFunctionDemo/Properties
 /HttpAzureFunctionDemo/local.settings.json
+/AzureFunctionNet5/.vscode
+/AzureFunctionNet5/local.settings.json
