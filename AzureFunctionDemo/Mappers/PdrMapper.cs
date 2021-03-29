@@ -10,7 +10,8 @@ namespace AzureFunctionDemo.Mappers
     {
         public override NavSupplyPoint ToSupplyPointStatus(SupplyPoint supplyPoint)
         {
-            return new NavSupplyPoint() { Id = supplyPoint.Id, Text = "Pdr text"};
+            Pdr pdr = supplyPoint as Pdr;
+            return new NavPdr() { Id = supplyPoint.Id, Text = "Pdr text", PdrNo = pdr.PdrNo };
         }
     }
 }

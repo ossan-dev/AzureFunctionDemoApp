@@ -10,7 +10,8 @@ namespace AzureFunctionDemo.Mappers
     {
         public override NavSupplyPoint ToSupplyPointStatus(SupplyPoint supplyPoint)
         {
-            return new NavSupplyPoint() { Id = supplyPoint.Id, Text ="Pod text" };
+            Pod pod = supplyPoint as Pod;
+            return new NavPod() { Id = supplyPoint.Id, Text = "Pod Text", PodNo = pod.PodNo  };
         }
     }
 }

@@ -37,12 +37,14 @@ namespace AzureFunctionDemo
             var invCommPod = _supplyPointFactory.GetSupplyPointMapper(pod).ToInvCommunication(pod);
             var invCommPdr = _supplyPointFactory.GetSupplyPointMapper(pdr).ToInvCommunication(pdr);
             var podNav = _supplyPointFactory.GetSupplyPointMapper(pod).ToSupplyPointStatus(pod);
+            NavPod navPod = podNav as NavPod;
             var pdrNav = _supplyPointFactory.GetSupplyPointMapper(pdr).ToSupplyPointStatus(pdr);
+            NavPdr navPdr = pdrNav as NavPdr;
 
-            Console.WriteLine(JsonSerializer.Serialize(invCommPod));
-            Console.WriteLine(JsonSerializer.Serialize(podNav));
-            Console.WriteLine(JsonSerializer.Serialize(invCommPdr));
-            Console.WriteLine(JsonSerializer.Serialize(pdrNav));
+            //Console.WriteLine(JsonSerializer.Serialize(invCommPod));
+            Console.WriteLine(JsonSerializer.Serialize(navPod));
+            //Console.WriteLine(JsonSerializer.Serialize(invCommPdr));
+            Console.WriteLine(JsonSerializer.Serialize(navPdr));
         }
     }
 }
